@@ -1,0 +1,19 @@
+#這個直接篩有點怪怪的 有可能我寫錯(因為篩過的居然比沒篩的還多筆資料)
+INSERT INTO bike_copy (SELECT * FROM bike WHERE act = 1);
+
+#篩出act非0的資料
+SELECT *
+FROM bike
+WHERE act=1
+INTO OUTFILE 'C:\\ProgramData\\MySQL\\MySQL Server 5.7\\Uploads\\bike1.csv'
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n';
+
+#計算筆數&篩月份
+SELECT COUNT(*) FROM bike WHERE SUBSTR(mday, 1,6)=202008;
+
+SELECT * FROM bike WHERE mday LIKE '2020091222%%%%';
+
+
+sno,sna,tot,sbi,sarea,mday,lat,lng,ar,bemp,act
